@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recruitment Flowchart</title>
+
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #eef2f7;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 { margin-bottom: 30px; }
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box {
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    min-width: 220px;
+    margin: 5px 0;
+}
+
+.input { background: #6c5ce7; }
+.process { background: #0984e3; }
+.output { background: #00b894; }
+.reject { background: #d63031; }
+
+.decision {
+    width: 140px;
+    height: 140px;
+    background: #fdcb6e;
+    transform: rotate(45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.decision span {
+    transform: rotate(-45deg);
+    font-weight: bold;
+}
+
+.arrow { font-size: 22px; }
+
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    width: 100%;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+button {
+    margin-top: 30px;
+    padding: 10px 20px;
+    background: #2d98da;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.result {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<h1>Recruitment Flowchart</h1>
+
+<div class="container">
+
+    <!-- INPUT -->
+    <div class="box input">INPUT: Candidate Application</div>
+    <div class="arrow">⬇️</div>
+
+    <!-- PROCESS -->
+    <div class="box process">PROCESS: HR Review</div>
+    <div class="arrow">⬇️</div>
+
+    <div class="box process">PROCESS: Screening</div>
+    <div class="arrow">⬇️</div>
+
+    <!-- DECISION 1 -->
+    <div class="decision"><span>Qualified?</span></div>
+
+    <!-- BRANCHES -->
+    <div class="row">
+
+        <!-- YES PATH -->
+        <div class="col">
+            <div class="label">YES</div>
+            <div class="arrow">⬇️</div>
+            <div class="box process">Interview</div>
+            <div class="arrow">⬇️</div>
+            <div class="decision"><span>Pass?</span></div>
+            <div class="arrow">⬇️</div>
+            <div class="box output">OUTPUT: Hired</div>
+        </div>
+
+        <!-- NO PATH -->
+        <div class="col">
+            <div class="label">NO</div>
+            <div class="arrow">⬇️</div>
+            <div class="box reject">OUTPUT: Rejected</div>
+        </div>
+
+    </div>
+
+</div>
+
+<button onclick="simulate()">Run Simulation</button>
+
+<div class="result" id="result"></div>
+
+
+
+<script>
+function simulate() {
+    const result = document.getElementById("result");
+    
+
+    if (qualified) {
+        if (passed) {
+            result.innerHTML = "✅ HIRED";
+            result.style.color = "green";
+        } else {
+            result.innerHTML = "⚠️ Rejected after interview";
+            result.style.color = "orange";
+        }
+    } else {
+        result.innerHTML = "❌ Rejected at screening";
+        result.style.color = "red";
+    }
+}
+</script>
+
+</body>
+</html>
